@@ -87,8 +87,8 @@ alter_table(cs, f"ALTER TABLE {utl.countries} ADD name_fa varchar(50) DEFAULT NU
 alter_table(cs, f"ALTER TABLE {utl.countries} ADD name_en varchar(50) DEFAULT NULL AFTER name_fa")
 alter_table(cs, f"ALTER TABLE {utl.countries} ADD area_code INT(11) NOT NULL DEFAULT 0 AFTER name_en")
 alter_table(cs, f"ALTER TABLE {utl.countries} ADD amount INT(11) NOT NULL DEFAULT 0 AFTER area_code")
-alter_table(cs, f"ALTER TABLE {utl.countries} ADD is_exists TINYINT(1) NOT NULL DEFAULT 1 AFTER amount")
-alter_table(cs, f"ALTER TABLE {utl.countries} ADD is_useable TINYINT(1) NOT NULL DEFAULT 1 AFTER is_exists")
+alter_table(cs, f"ALTER TABLE {utl.countries} ADD is_exists TINYINT(1) NOT NULL DEFAULT 0 AFTER amount")
+alter_table(cs, f"ALTER TABLE {utl.countries} ADD is_useable TINYINT(1) NOT NULL DEFAULT 0 AFTER is_exists")
 
 
 alter_table(cs, f"CREATE TABLE IF NOT EXISTS {utl.users} (id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;")
@@ -125,7 +125,7 @@ if row_cats is None:
 
 try:
     cs.execute(f"""INSERT INTO {utl.countries} (id,emoji,alpha_2,name_fa,name_en,area_code,amount,is_exists,is_useable) VALUES
-(1, '🇷🇺', 'ru', 'روسیه', 'russia', 7, 5000, 0, 1),
+(1, '🇷🇺', 'ru', 'روسیه', 'russia', 7, 5000, 0, 0),
 (2, '🇺🇦', 'ua', 'اوکراین', 'ukraine', 380, 5000, 0, 1),
 (3, '🇰🇿', 'kz', 'قزاقستان', 'kazakhstan', 7, 5000, 0, 0),
 (4, '🇨🇳', 'cn', 'چین', 'china', 86, 5000, 0, 1),
